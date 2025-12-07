@@ -1,0 +1,110 @@
+.confirmacion-container {
+  min-height: calc(100vh - 140px);
+  background-color: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.confirmacion-card {
+  background-color: white;
+  border: 2px solid #B45309;
+  border-radius: 12px;
+  padding: 50px;
+  max-width: 700px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.confirmacion-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.icono-check {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 20px;
+  border-radius: 50%;
+  border: 4px solid #B45309;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.titulo-confirmacion {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #B45309;
+  margin-bottom: 15px;
+}
+
+.mensaje-exito {
+  text-align: center;
+  color: #6b7280;
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+}
+
+.detalles-reserva {
+  border: 2px solid #d1d5db;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 30px;
+}
+
+.detalles-reserva h3 {
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #1f2937;
+}
+
+.detalle-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background-color: #f9fafb;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
+.detalle-item svg {
+  flex-shrink: 0;
+}
+
+.detalle-item span {
+  font-size: 1rem;
+  color: #374151;
+}
+
+.mensaje-correo {
+  background-color: #f3f4f6;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.mensaje-correo p {
+  font-weight: bold;
+  color: #1f2937;
+}
+
+.btn-volver {
+  width: 100%;
+  background-color: #B45309;
+  color: white;
+  border: none;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-volver:hover {
+  background-color: #92400e;
+}

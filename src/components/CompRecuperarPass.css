@@ -1,0 +1,108 @@
+.recuperar-container {
+  min-height: 100vh;
+  background-color: #d1d5db;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.recuperar-card {
+  background-color: white;
+  width: 100%;
+  max-width: 600px;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+.recuperar-header {
+  background-color: white;
+  padding: 30px;
+  text-align: center;
+  border-bottom: 3px solid #B45309;
+}
+
+.logo-recuperar {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 15px;
+  border-radius: 50%;
+}
+
+.recuperar-form-container {
+  padding: 40px;
+  border: 2px solid #B45309;
+  margin: 20px;
+  border-radius: 12px;
+}
+
+.recuperar-form-container h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.mensaje-ayuda {
+  text-align: center;
+  color: #6b7280;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.recuperar-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.recuperar-botones {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.btn-volver-recuperar {
+  border: 2px solid #B45309;
+  background-color: white;
+  color: #B45309;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-volver-recuperar:hover {
+  background-color: #fef3c7;
+}
+
+.btn-enviar-codigo {
+  background-color: #B45309;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-enviar-codigo:hover {
+  background-color: #92400e;
+}
+
+.footer-recuperar {
+  background-color: #9ca3af;
+  padding: 15px;
+  text-align: center;
+}
+
+.footer-recuperar p {
+  color: #1f2937;
+  font-size: 0.85rem;
+  margin: 0;
+}

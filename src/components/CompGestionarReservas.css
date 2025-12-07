@@ -1,0 +1,667 @@
+/* ========== GESTIONAR RESERVAS ========== */
+.gestionar-reservas-container {
+  min-height: calc(100vh - 140px);
+  background: #f5f5f5;
+  padding: 30px 20px;
+}
+
+/* ========== HEADER ========== */
+.gestionar-header {
+  max-width: 1200px;
+  margin: 0 auto 30px;
+}
+
+.gestionar-titulo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #B45309;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.gestionar-titulo-icono {
+  font-size: 1.3rem;
+}
+
+/* ========== CONTENEDOR PRINCIPAL ========== */
+.gestionar-contenido {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border: 2px solid #B45309;
+  border-radius: 8px;
+  padding: 30px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ========== SECCIÓN FILTROS ========== */
+.filtros-section {
+  margin-bottom: 30px;
+  padding-bottom: 25px;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.filtros-titulo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #B45309;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.filtros-form {
+  display: flex;
+  gap: 15px;
+  align-items: flex-end;
+}
+
+.filtro-group {
+  flex: 1;
+  max-width: 300px;
+}
+
+.filtro-label {
+  display: block;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 8px;
+  font-size: 0.9rem;
+}
+
+.filtro-select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 2px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.filtro-select:focus {
+  outline: none;
+  border-color: #B45309;
+}
+
+.filtro-select:hover {
+  border-color: #B45309;
+}
+
+.btn-filtrar {
+  background: #B45309;
+  color: white;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.2s;
+  height: 42px;
+}
+
+.btn-filtrar:hover {
+  background: #92400e;
+}
+
+/* ========== SECCIÓN RESULTADOS ========== */
+.resultados-titulo {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #B45309;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ========== LISTA DE RESERVAS ========== */
+.reservas-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ========== TARJETA DE RESERVA - SIMPLE ========== */
+.reserva-card {
+  background: #f9fafb;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 20px;
+  transition: all 0.2s;
+}
+
+.reserva-card:hover {
+  border-color: #B45309;
+  box-shadow: 0 2px 8px rgba(180, 83, 9, 0.1);
+}
+
+/* ========== HEADER DE RESERVA - UNA LÍNEA ========== */
+.reserva-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  padding-bottom: 15px;
+  border-bottom: 2px solid #e5e7eb;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.reserva-info-group {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.reserva-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.reserva-info-label {
+  font-size: 0.75rem;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.reserva-info-valor {
+  font-size: 0.95rem;
+  color: #333;
+  font-weight: 600;
+}
+
+/* ========== BODY DE RESERVA ========== */
+.reserva-body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.reserva-detalles {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  flex: 1;
+}
+
+.detalle-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 5px;
+  font-size: 0.85rem;
+  color: #333;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.detalle-badge-icono {
+  font-size: 1rem;
+}
+
+.detalle-badge.estado-confirmada {
+  background: #d1fae5;
+  border-color: #10b981;
+  color: #065f46;
+}
+
+.detalle-badge.estado-pendiente {
+  background: #fef3c7;
+  border-color: #f59e0b;
+  color: #92400e;
+}
+
+.detalle-badge.estado-cancelada {
+  background: #fee2e2;
+  border-color: #ef4444;
+  color: #991b1b;
+}
+
+/* ========== ACCIONES ========== */
+.reserva-acciones {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 130px;
+}
+
+.btn-accion {
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  white-space: nowrap;
+  transition: all 0.2s;
+  text-align: center;
+}
+
+.btn-editar {
+  background: white;
+  color: #B45309;
+  border: 2px solid #B45309;
+}
+
+.btn-editar:hover {
+  background: #fef3c7;
+}
+
+.btn-contactar {
+  background: #B45309;
+  color: white;
+}
+
+.btn-contactar:hover {
+  background: #92400e;
+}
+
+/* ========== SIN RESULTADOS ========== */
+.sin-resultados {
+  text-align: center;
+  padding: 60px 20px;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.sin-resultados-icono {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  opacity: 0.5;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .filtros-form {
+    flex-wrap: wrap;
+  }
+
+  .filtro-group {
+    max-width: 100%;
+    flex: 1 1 250px;
+  }
+
+  .btn-filtrar {
+    width: 100%;
+  }
+
+  .reserva-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .reserva-info-group {
+    width: 100%;
+  }
+
+  .reserva-body {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .reserva-acciones {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  .btn-accion {
+    flex: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  .gestionar-contenido {
+    padding: 20px 15px;
+  }
+
+  .gestionar-titulo {
+    font-size: 1.1rem;
+  }
+
+  .filtros-form {
+    flex-direction: column;
+  }
+
+  .filtro-group {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .reserva-info-group {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .reserva-detalles {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .detalle-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .reserva-acciones {
+    flex-direction: column;
+  }
+
+  .btn-accion {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .gestionar-titulo {
+    font-size: 1rem;
+  }
+
+  .filtros-titulo,
+  .resultados-titulo {
+    font-size: 0.9rem;
+  }
+
+  .reserva-info-label {
+    font-size: 0.7rem;
+  }
+
+  .reserva-info-valor {
+    font-size: 0.85rem;
+  }
+
+  .detalle-badge {
+    font-size: 0.8rem;
+    padding: 6px 12px;
+  }
+
+  .btn-accion {
+    font-size: 0.75rem;
+    padding: 7px 15px;
+  }
+}
+
+/* ========== MODAL EDITAR RESERVA ========== */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 20px;
+  animation: fadeIn 0.2s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-contenido {
+  background: white;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* ========== HEADER DEL MODAL ========== */
+.modal-header {
+  background: #B45309;
+  color: white;
+  padding: 20px 25px;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-titulo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.modal-titulo-icono {
+  font-size: 1.5rem;
+}
+
+.btn-cerrar-modal {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 1.8rem;
+  cursor: pointer;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  transition: all 0.2s;
+}
+
+.btn-cerrar-modal:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========== BODY DEL MODAL ========== */
+.modal-body {
+  padding: 25px;
+}
+
+.modal-info-reserva {
+  background: #fef3c7;
+  border: 2px solid #f59e0b;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 25px;
+}
+
+.modal-info-reserva p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #92400e;
+}
+
+.modal-info-reserva strong {
+  color: #B45309;
+  font-weight: bold;
+}
+
+/* ========== FORMULARIO ========== */
+.modal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.form-label {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-label-icono {
+  font-size: 1.1rem;
+  color: #B45309;
+}
+
+.form-input,
+.form-select {
+  padding: 12px 15px;
+  border: 2px solid #d1d5db;
+  border-radius: 5px;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.form-input:focus,
+.form-select:focus {
+  outline: none;
+  border-color: #B45309;
+  box-shadow: 0 0 0 3px rgba(180, 83, 9, 0.1);
+}
+
+.form-input:disabled {
+  background: #f3f4f6;
+  color: #6b7280;
+  cursor: not-allowed;
+}
+
+.form-select {
+  cursor: pointer;
+  background: white;
+}
+
+.form-nota {
+  font-size: 0.8rem;
+  color: #666;
+  font-style: italic;
+  margin-top: -5px;
+}
+
+/* ========== GRID DE 2 COLUMNAS ========== */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+}
+
+/* ========== FOOTER DEL MODAL ========== */
+.modal-footer {
+  padding: 20px 25px;
+  border-top: 2px solid #e5e7eb;
+  display: flex;
+  gap: 15px;
+  justify-content: flex-end;
+}
+
+.btn-modal {
+  padding: 12px 30px;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 0.95rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.2s;
+}
+
+.btn-cancelar {
+  background: #6b7280;
+  color: white;
+}
+
+.btn-cancelar:hover {
+  background: #4b5563;
+}
+
+.btn-guardar {
+  background: #B45309;
+  color: white;
+}
+
+.btn-guardar:hover {
+  background: #92400e;
+}
+
+.btn-guardar:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+}
+
+/* ========== RESPONSIVE MODAL ========== */
+@media (max-width: 768px) {
+  .modal-contenido {
+    max-width: 95%;
+  }
+
+  .modal-header {
+    padding: 15px 20px;
+  }
+
+  .modal-titulo {
+    font-size: 1.1rem;
+  }
+
+  .modal-body {
+    padding: 20px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-footer {
+    flex-direction: column;
+    padding: 15px 20px;
+  }
+
+  .btn-modal {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .modal-titulo {
+    font-size: 1rem;
+  }
+
+  .form-label {
+    font-size: 0.85rem;
+  }
+
+  .form-input,
+  .form-select {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+}

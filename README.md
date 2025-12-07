@@ -1,70 +1,137 @@
-# Getting Started with Create React App
+# Sistema de Reservas “Los Tres Sabores”
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto es una aplicación web desarrollada en React que implementa un sistema de reservas para un restaurante.  
+Fue elaborado con el objetivo de simular un flujo completo de gestión, tanto para clientes como para personal administrativo, utilizando únicamente front-end y almacenamiento local.
 
-## Available Scripts
+## 1. Descripción General
+El sistema cuenta con dos tipos de acceso:
 
-In the project directory, you can run:
+### ● Cliente
+- Registro e inicio de sesión.
+- Visualización de las cartas del restaurante (PDF).
+- Realización de reservas indicando fecha, hora y cantidad de personas.
+- Recibo de confirmación con número de reserva generado automáticamente.
 
-### `npm start`
+### ● Administrador
+- Acceso a un panel con métricas del sistema.
+- Visualización detallada de reservas.
+- Gestión de reservas pendientes y confirmadas.
+- Navegación interna exclusiva del administrador.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Toda la lógica de navegación está centralizada en **App.js**, utilizando estados para controlar la vista activa.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## 2. Características Principales
+- Interfaz moderna y adaptable (CSS personalizado).
+- Flujo de autenticación básica usando LocalStorage.
+- Generación de códigos únicos de reserva.
+- Gestión de múltiples vistas desde un solo componente central.
+- Panel administrativo funcional con estadísticas.
+- Cartas del restaurante integradas en formato PDF.
+- Código organizado por componentes independientes.
 
-### `npm test`
+## 3. Estructura del Proyecto
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```
+sistema-pedidos/
+│
+├── public/
+│   ├── cartas/
+│   │   ├── carta-bebidas.pdf
+│   │   ├── carta-comidas.pdf
+│   │   └── carta-promos.pdf
+│   ├── favicon.ico
+│   ├── index.html
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+│
+├── src/
+│   ├── assets/
+│   │   └── logo/
+│   │
+│   ├── components/
+│   │   ├── CompNav.js / .css
+│   │   ├── CompLogin.js / .css
+│   │   ├── CompRegistro.js / .css
+│   │   ├── CompRecuperarPass.js / .css
+│   │   ├── CompActualizarPass.js / .css
+│   │   ├── CompCarta.js / .css
+│   │   ├── CompFormReserva.js / .css
+│   │   ├── CompConfirmacion.js / .css
+│   │   ├── CompPanelAdmin.js / .css
+│   │   ├── CompGestionarReservas.js / .css
+│   │   └── CompFooter.js / .css
+│   │
+│   ├── App.js
+│   ├── App.css
+│   ├── index.js
+│   ├── index.css
+│   └── App.test.js
+│
+├── package.json
+├── package-lock.json
+└── README.md
+```
 
-### `npm run build`
+## 4. Tecnologías Utilizadas
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```
+"react": "^19.2.0",
+"react-dom": "^19.2.0",
+"react-scripts": "5.0.1",
+"@testing-library/react": "^16.3.0",
+"@testing-library/jest-dom": "^6.9.1",
+"@testing-library/user-event": "^13.5.0",
+"web-vitals": "^2.1.4"
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 5. Instalación y Ejecución
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. Clonar el repositorio:
+```
+git clone <url-del-repo>
+```
 
-### `npm run eject`
+2. Instalar dependencias:
+```
+npm install
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+3. Iniciar el servidor:
+```
+npm start
+```
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## 6. Componentes Principales
+Descripción de los componentes principales según su función en el sistema (Nav, Login, Registro, Cartas, Form Reservas, Gestión Reservas, Confirmación, Panel Admin, Recuperar Pass, Footer, Actualizar).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## 7. Flujo de Navegación
+Controlado con el estado **vista** en App.js:
+- Inicio → Login → Cartas → Formulario → Confirmación
+- Admin → Panel → Gestión
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## 8. Gestión de Datos
+Toda la información se almacena mediante **localStorage**:
+- Usuarios
+- Reservas
+- Estados de sesión
 
-## Learn More
+## 9. Credenciales de Prueba
+### Cliente:
+Registrar uno nuevo desde la app.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Administrador:
+- Seleccionar “LOGIN ADMIN”
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+## 10. Guía de Uso
+1. Seleccionar tipo de acceso.
+2. Iniciar sesión o registrarse.
+3. Visualizar cartas.
+4. Completar una reserva.
+5. Confirmar.
+6. (Admin) Revisar panel de control.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
