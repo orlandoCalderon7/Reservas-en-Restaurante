@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import './CompFormReserva.css';
+import { BsStopwatch } from "react-icons/bs";
+
 
 function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
   const [formData, setFormData] = useState({
@@ -344,7 +346,7 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
                   max="22:00"
                 />
                 {errors.hora && <span className="error-mensaje">{errors.hora}</span>}
-                <span className="form-ayuda">⏰ Horario: 9:00 AM - 10:00 PM</span>
+                <span className="form-ayuda"> <BsStopwatch /> Horario: 9:00 AM - 10:00 PM</span>
               </div>
             </div>
 

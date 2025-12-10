@@ -53,7 +53,7 @@ function CompRegistro({ onVolver, onRegistroExitoso }) {
     <div className="registro-container">
       <div className="registro-card">
         <div className="registro-header">
-          <img src="/logo-restaurante.png" alt="Los Tres Sabores" className="logo-registro" />
+          
           <h1 className="titulo-restaurante">LOS TRES SABORES</h1>
           <p className="subtitulo-registro">Sistema de gestión de Reservas</p>
         </div>

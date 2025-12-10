@@ -43,7 +43,7 @@ function CompRecuperarPass({ onVolver, onEnviarCodigo }) {
     <div className="recuperar-container">
       <div className="recuperar-card">
         <div className="recuperar-header">
-          <img src="/logo-restaurante.png" alt="Los Tres Sabores" className="logo-recuperar" />
+          
           <h1 className="titulo-restaurante">LOS TRES SABORES</h1>
           <p className="subtitulo-recuperar">Sistema de gestión de Reservas</p>
         </div>

@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './CompPanelAdmin.css';
+import { FcStatistics } from "react-icons/fc";
+import { MdOutlineTableRestaurant } from "react-icons/md";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { CiStopwatch } from "react-icons/ci";
+import { ImManWoman } from "react-icons/im";
+import { FaLongArrowAltLeft } from "react-icons/fa";
+import { FaArrowRight } from "react-icons/fa";
 
 function CompPanelAdmin({ onCambiarVista }) {
   const [reservasHoy, setReservasHoy] = useState(0);
@@ -36,7 +43,7 @@ function CompPanelAdmin({ onCambiarVista }) {
       {/* HEADER */}
       <div className="panel-admin-header">
         <h1 className="panel-titulo">
-          <span className="icono-panel">🏠</span>
+          <span className="icono-panel"></span>
           PANEL ADMINISTRADOR
         </h1>
       </div>
@@ -48,7 +55,7 @@ function CompPanelAdmin({ onCambiarVista }) {
             <div className="estadistica-label">RESERVAS HOY</div>
             <div className="estadistica-valor">{reservasHoy}</div>
           </div>
-          <div className="estadistica-icono">📅</div>
+          <div className="estadistica-icono"><FaRegCalendarAlt /></div>
         </div>
 
         <div className="estadistica-card">
@@ -56,7 +63,7 @@ function CompPanelAdmin({ onCambiarVista }) {
             <div className="estadistica-label">MESAS DISPONIBLES</div>
             <div className="estadistica-valor">{mesasDisponibles}</div>
           </div>
-          <div className="estadistica-icono">🪑</div>
+          <div className="estadistica-icono"><MdOutlineTableRestaurant /></div>
         </div>
 
         <div className="estadistica-card">
@@ -64,7 +71,7 @@ function CompPanelAdmin({ onCambiarVista }) {
             <div className="estadistica-label">OCUPACIÓN</div>
             <div className="estadistica-valor">{ocupacion}%</div>
           </div>
-          <div className="estadistica-icono">📊</div>
+          <div className="estadistica-icono"><FcStatistics /></div>
         </div>
       </div>
 
@@ -73,7 +80,7 @@ function CompPanelAdmin({ onCambiarVista }) {
         {/* CALENDARIO RESERVAS - HORIZONTAL */}
         <div className="panel-section">
           <div className="section-header">
-            <span className="section-icono">📅</span>
+            <span className="section-icono"></span>
             <h2 className="section-titulo">CALENDARIO RESERVAS</h2>
           </div>
 
@@ -83,8 +90,8 @@ function CompPanelAdmin({ onCambiarVista }) {
               <div className="calendario-header">
                 <div className="calendario-mes">Noviembre 2025</div>
                 <div className="calendario-nav">
-                  <button className="btn-nav-calendario">←</button>
-                  <button className="btn-nav-calendario">→</button>
+                  <button className="btn-nav-calendario"><FaLongArrowAltLeft /></button>
+                  <button className="btn-nav-calendario"><FaArrowRight /></button>
                 </div>
               </div>
 
@@ -131,14 +138,14 @@ function CompPanelAdmin({ onCambiarVista }) {
         {/* RESERVAS DEL DÍA */}
         <div className="panel-section">
           <div className="section-header">
-            <span className="section-icono">👥</span>
+            <span className="section-icono"></span>
             <h2 className="section-titulo">RESERVAS DEL DÍA</h2>
           </div>
 
           <div className="reservas-dia-lista">
             {reservasDia.length === 0 ? (
               <div className="sin-reservas-mensaje">
-                📭 No hay reservas para hoy
+                 No hay reservas para hoy
               </div>
             ) : (
               reservasDia.map(reserva => (
@@ -152,15 +159,15 @@ function CompPanelAdmin({ onCambiarVista }) {
 
                   <div className="reserva-dia-info">
                     <div className="info-badge">
-                      <span className="info-badge-icono">🕐</span>
+                      <span className="info-badge-icono"><CiStopwatch /></span>
                       {reserva.hora}
                     </div>
                     <div className="info-badge">
-                      <span className="info-badge-icono">👥</span>
+                      <span className="info-badge-icono"><ImManWoman /></span>
                       {reserva.personas} PERSONAS
                     </div>
                     <div className="info-badge">
-                      <span className="info-badge-icono">🪑</span>
+                      <span className="info-badge-icono"><MdOutlineTableRestaurant /></span>
                       MESA No. {reserva.mesa || 'Sin asignar'}
                     </div>
                   </div>

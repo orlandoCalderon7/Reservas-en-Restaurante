@@ -1,5 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import './CompGestionarReservas.css';
+import { LuHouse } from "react-icons/lu";
+import { FaRegCalendarAlt } from "react-icons/fa";
+import { CiStopwatch } from "react-icons/ci";
+import { ImManWoman } from "react-icons/im";
+import { MdOutlineTableRestaurant } from "react-icons/md";
+import { FaPenAlt } from "react-icons/fa";
+import { MdMan2 } from "react-icons/md";
+import { MdLocalPhone } from "react-icons/md";
+import { BsLifePreserver } from "react-icons/bs";
 
 function CompGestionarReservas({ onVolver }) {
   const [reservas, setReservas] = useState([]);
@@ -152,7 +161,7 @@ Hora: ${reserva.hora}
       {/* HEADER */}
       <div className="gestionar-header">
         <h1 className="gestionar-titulo">
-          <span className="gestionar-titulo-icono">🏠</span>
+          <span className="gestionar-titulo-icono"><LuHouse /></span>
           GESTIONAR RESERVAS
         </h1>
       </div>
@@ -217,16 +226,16 @@ Hora: ${reserva.hora}
                   <div className="reserva-body">
                     <div className="reserva-detalles">
                       <div className="detalle-badge">
-                        <span className="detalle-badge-icono">🕐</span>
+                        <span className="detalle-badge-icono"><CiStopwatch /></span>
                         {reserva.hora}
                       </div>
                       <div className="detalle-badge">
-                        <span className="detalle-badge-icono">👥</span>
+                        <span className="detalle-badge-icono"><ImManWoman /></span>
                         {reserva.personas} PERSONAS
                       </div>
                       {reserva.mesa && (
                         <div className="detalle-badge">
-                          <span className="detalle-badge-icono">🪑</span>
+                          <span className="detalle-badge-icono"><MdOutlineTableRestaurant /></span>
                           MESA No. {reserva.mesa}
                         </div>
                       )}
@@ -264,7 +273,7 @@ Hora: ${reserva.hora}
             {/* HEADER */}
             <div className="modal-header">
               <h2 className="modal-titulo">
-                <span className="modal-titulo-icono">✏️</span>
+                <span className="modal-titulo-icono"><FaPenAlt /></span>
                 EDITAR RESERVA
               </h2>
               <button className="btn-cerrar-modal" onClick={handleCerrarModal}>
@@ -278,7 +287,7 @@ Hora: ${reserva.hora}
               <div className="modal-info-reserva">
                 <p><strong>Reserva No.:</strong> {reservaEditando?.numeroReserva}</p>
                 <p><strong>Email:</strong> {reservaEditando?.email}</p>
-                <p className="form-nota"> El email no se puede modificar</p>
+                <p className="form-nota"> </p>
               </div>
 
               {/* FORMULARIO */}
@@ -286,7 +295,7 @@ Hora: ${reserva.hora}
                 {/* NOMBRE */}
                 <div className="form-group">
                   <label className="form-label">
-                    <span className="form-label-icono">👤</span>
+                    <span className="form-label-icono"><MdMan2 /></span>
                     Nombre Completo
                   </label>
                   <input
@@ -302,7 +311,7 @@ Hora: ${reserva.hora}
                 {/* TELÉFONO */}
                 <div className="form-group">
                   <label className="form-label">
-                    <span className="form-label-icono">📱</span>
+                    <span className="form-label-icono"><MdLocalPhone /></span>
                     Teléfono
                   </label>
                   <input
@@ -319,7 +328,7 @@ Hora: ${reserva.hora}
                 <div className="form-row">
                   <div className="form-group">
                     <label className="form-label">
-                      <span className="form-label-icono">📅</span>
+                      <span className="form-label-icono"><FaRegCalendarAlt /></span>
                       Fecha
                     </label>
                     <input
@@ -333,7 +342,7 @@ Hora: ${reserva.hora}
 
                   <div className="form-group">
                     <label className="form-label">
-                      <span className="form-label-icono">🕐</span>
+                      <span className="form-label-icono"><CiStopwatch /></span>
                       Hora
                     </label>
                     <input
@@ -350,7 +359,7 @@ Hora: ${reserva.hora}
                 <div className="form-row">
                   <div className="form-group">
                     <label className="form-label">
-                      <span className="form-label-icono">👥</span>
+                      <span className="form-label-icono"><ImManWoman /></span>
                       Número de Personas
                     </label>
                     <input
@@ -366,7 +375,7 @@ Hora: ${reserva.hora}
 
                   <div className="form-group">
                     <label className="form-label">
-                      <span className="form-label-icono">🪑</span>
+                      <span className="form-label-icono"><MdOutlineTableRestaurant /></span>
                       Mesa No.
                     </label>
                     <input
@@ -383,7 +392,7 @@ Hora: ${reserva.hora}
                 {/* ESTADO */}
                 <div className="form-group">
                   <label className="form-label">
-                    <span className="form-label-icono">📊</span>
+                    <span className="form-label-icono"><BsLifePreserver /></span>
                     Estado de la Reserva
                   </label>
                   <select
