@@ -436,3 +436,117 @@
     font-size: 0.8rem;
   }
 }
+
+/* ================================================================= */
+/* ============= MODIFICACIONES PARA MODO OSCURO =================== */
+/* ================================================================= */
+
+/* Contenedor Principal */
+.dark .panel-admin-container {
+  background-color: #1a1a1a; /* Fondo oscuro */
+  color: #e0e0e0; /* Texto claro */
+}
+
+/* Título del Panel */
+.dark .panel-admin-header .panel-titulo {
+  color: #e0e0e0; 
+}
+
+/* Estadísticas (Cards) */
+.dark .estadistica-card {
+  background-color: #2c2c2c; 
+  border-color: #444; /* Asegura el cambio de borde */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.dark .estadistica-card .estadistica-label {
+  color: #a0a0a0; 
+}
+
+.dark .estadistica-card .estadistica-valor {
+  color: #f5f5f5; /* Sobrescribe el #333 */
+}
+
+/* Contenido Principal (Secciones) */
+.dark .panel-section {
+  background-color: #2c2c2c;
+  border-color: #444;
+}
+
+.dark .panel-section .section-header {
+  border-color: #444; /* Borde separador */
+}
+
+.dark .panel-section .section-titulo {
+  color: #e0e0e0;
+}
+
+/* Calendario */
+.dark .calendario-mes {
+  color: #f5f5f5;
+}
+
+.dark .calendario-dia-nombre {
+  color: #a0a0a0;
+}
+
+.dark .calendario-dia {
+  background-color: #383838; /* Fondo de día */
+  color: #e0e0e0;
+  border: 1px solid #555;
+}
+
+.dark .calendario-dia.vacio {
+  background: transparent;
+}
+
+.dark .calendario-dia.con-reservas {
+  background: #78350f; /* Naranja oscuro */
+  color: #f5f5f5;
+}
+
+.dark .calendario-dia.hoy {
+  background: #10b981; /* Verde */
+  color: white;
+  border: 2px solid #059669;
+}
+
+/* Lista de Reservas del Calendario */
+.dark .reservas-calendario-titulo {
+  color: #f5f5f5;
+  border-bottom: 2px solid #444;
+}
+
+.dark .reserva-calendario-item {
+  background: #383838;
+  border-left: 4px solid #B45309;
+  color: #e0e0e0;
+}
+
+.dark .reserva-calendario-item:hover {
+  background: #444;
+}
+
+.dark .reserva-calendario-item strong {
+  color: #ff9933; /* Naranja brillante */
+}
+
+/* Tarjetas de Reservas del Día */
+.dark .reserva-dia-card {
+  background: #383838;
+  border: 1px solid #555;
+}
+
+.dark .reserva-dia-nombre {
+  color: #f5f5f5;
+}
+
+.dark .info-badge {
+  background: #444;
+  border: 1px solid #555;
+  color: #e0e0e0;
+}
+
+.dark .sin-reservas-mensaje {
+  color: #a0a0a0;
+}

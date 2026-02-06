@@ -1,3 +1,4 @@
+/*CompPanelAdmin.js*/
 import React, { useState, useEffect } from 'react';
 import './CompPanelAdmin.css';
 import { FcStatistics } from "react-icons/fc";
@@ -189,3 +190,4 @@ function CompPanelAdmin({ onCambiarVista }) {
 }
 
 export default CompPanelAdmin;
+

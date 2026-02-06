@@ -1,3 +1,4 @@
+/*App.js*/
 import React, { useState, useEffect } from 'react';
 import CompNav from './components/CompNav';
 import CompLogin from './components/CompLogin';
@@ -10,8 +11,10 @@ import CompConfirmacion from './components/CompConfirmacion';
 import CompPanelAdmin from './components/CompPanelAdmin';
 import CompGestionarReservas from './components/CompGestionarReservas';
 import CompFooter from './components/CompFooter';
+import CompTema from './components/CompTema';
 import logoRestaurante from "./assets/logo/logo-restaurante.png";
 import './App.css';
+
 
 function App() {
   const [vista, setVista] = useState('inicio');
@@ -19,6 +22,19 @@ function App() {
   const [tipoUsuario, setTipoUsuario] = useState(null);
   const [reservaActual, setReservaActual] = useState(null);
   const [correoRecuperacion, setCorreoRecuperacion] = useState('');
+
+  // 1. ESTADO DEL TEMA
+  const [tema, setTema] = useState(localStorage.getItem('tema') || 'claro');
+
+  // 2. FUNCIÓN PARA ALTERNAR EL TEMA
+  const toggleTema = () => {
+    setTema(prevTema => (prevTema === 'claro' ? 'oscuro' : 'claro'));
+  };
+
+  // 3. EFECTO PARA GUARDAR EL TEMA EN LOCALSTORAGE
+  useEffect(() => {
+    localStorage.setItem('tema', tema);
+  }, [tema]);
 
   // useEffect para monitorear cambios de vista
   useEffect(() => {
@@ -211,6 +227,8 @@ function App() {
           onLogout={handleLogout}
           vistaActual={vista}
           cambiarVista={setVista}
+          tema={tema}
+          toggleTema={toggleTema}
         />
       );
     }
@@ -234,6 +252,7 @@ function App() {
         </div>
         
         <div className="nav-usuario">
+          <CompTema tema={tema} toggleTema={toggleTema} /> 
           <div className="logo-nav">
             <span style={{ fontSize: '2rem' }}>
               <img 
@@ -250,9 +269,11 @@ function App() {
 
   // ========== RENDERIZADO PRINCIPAL ==========
   return (
-    <div className="app-container">
+    <div className={`app-container ${tema === 'oscuro' ? 'dark' : ''}`}> 
+      
       {/* NAVBAR EN TODAS LAS VISTAS */}
       {renderNavbar()}
+      
 
       {/* CONTENIDO SEGÚN LA VISTA */}
       {vista === 'inicio' && (

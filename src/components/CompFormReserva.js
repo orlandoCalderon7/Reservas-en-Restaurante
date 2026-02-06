@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import './CompFormReserva.css';
 import { BsStopwatch } from "react-icons/bs";
-
+import { FaIdCard } from "react-icons/fa";
 
 function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
   const [formData, setFormData] = useState({
+    dni: '',
     nombre: '',
     email: '',
     telefono: '',
@@ -19,13 +22,100 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
   const [verificandoDisponibilidad, setVerificandoDisponibilidad] = useState(false);
   const [disponibilidadVerificada, setDisponibilidadVerificada] = useState(false);
 
+  const [cargandoDni, setCargandoDni] = useState(false);
+  const [dniAutocompletado, setDniAutocompletado] = useState(false);
+
+  //  VALIDACIÓN DE DNI
+  const validarDNI = (dni) => {
+    const dniRegex = /^[0-9]{8}$/;
+    return dniRegex.test(dni);
+  };
+
+  // UTOCOMPLETAR NOMBRE CUANDO DNI TENGA 8 DÍGITOS (AXIOS)
+  useEffect(() => {
+    const dni = formData.dni;
+
+    if (!dni || dni.length !== 8 || !validarDNI(dni)) {
+      setDniAutocompletado(false);
+      return;
+    }
+
+    // (opcional) evita reconsultar si ya está cargado
+    if (dniAutocompletado && formData.nombre.trim()) return;
+
+    let cancel = false;
+
+    const buscarNombrePorDni = async () => {
+      try {
+        setCargandoDni(true);
+
+        const { data } = await axios.get(
+          `https://graphperu.daustinn.com/api/query/${dni}`
+        );
+
+        if (cancel) return;
+
+        const nombreDetectado = data?.fullName || "";
+
+        if (!nombreDetectado) {
+          setErrors(prev => ({ ...prev, dni: "DNI no encontrado" }));
+          setDniAutocompletado(false);
+          return;
+        }
+
+        setFormData(prev => ({
+          ...prev,
+          nombre: String(nombreDetectado).trim()
+        }));
+
+        setErrors(prev => ({ ...prev, dni: "", nombre: "" }));
+        setDniAutocompletado(true);
+      } catch (error) {
+        if (cancel) return;
+        setErrors(prev => ({ ...prev, dni: "Error al consultar DNI" }));
+        setDniAutocompletado(false);
+      } finally {
+        if (!cancel) setCargandoDni(false);
+      }
+    };
+
+    buscarNombrePorDni();
+
+    return () => {
+      cancel = true;
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [formData.dni]);
+
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
+
+    // VALIDACIÓN ESPECIAL PARA DNI
+    if (name === 'dni') {
+      const soloNumeros = value.replace(/[^0-9]/g, '').slice(0, 8);
+
+      // si cambia el DNI, permite nueva consulta
+      setDniAutocompletado(false);
+
+      setFormData(prev => ({
+        ...prev,
+        [name]: soloNumeros
+      }));
+
+      if (errors[name]) {
+        setErrors(prev => ({
+          ...prev,
+          [name]: ''
+        }));
+      }
+      return;
+    }
+
     setFormData(prev => ({
       ...prev,
       [name]: type === 'checkbox' ? checked : value
     }));
-    
+
     if (errors[name]) {
       setErrors(prev => ({
         ...prev,
@@ -70,7 +160,7 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
     const fechaSeleccionada = new Date(formData.fecha + 'T00:00:00');
     const hoy = new Date();
     hoy.setHours(0, 0, 0, 0);
-    
+
     if (fechaSeleccionada < hoy) {
       alert('No puedes reservar en una fecha pasada');
       return;
@@ -80,8 +170,8 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
 
     setTimeout(() => {
       const reservasExistentes = JSON.parse(localStorage.getItem('reservas') || '[]');
-      const reservaExistente = reservasExistentes.find(r => 
-        r.fecha === formData.fecha && 
+      const reservaExistente = reservasExistentes.find(r =>
+        r.fecha === formData.fecha &&
         r.hora === formData.hora &&
         r.estado !== 'CANCELADA'
       );
@@ -110,6 +200,13 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
   const validarFormularioBasico = () => {
     const nuevosErrores = {};
 
+    // VALIDACIÓN DNI
+    if (!formData.dni.trim()) {
+      nuevosErrores.dni = 'El DNI es obligatorio';
+    } else if (!validarDNI(formData.dni)) {
+      nuevosErrores.dni = 'El DNI debe tener exactamente 8 dígitos';
+    }
+
     if (!formData.nombre.trim()) {
       nuevosErrores.nombre = 'El nombre es obligatorio';
     } else if (formData.nombre.trim().length < 3) {
@@ -136,7 +233,7 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
       const fechaSeleccionada = new Date(formData.fecha + 'T00:00:00');
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
-      
+
       if (fechaSeleccionada < hoy) {
         nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy';
       }
@@ -160,6 +257,13 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
   const validarFormularioCompleto = () => {
     const nuevosErrores = {};
 
+    // VALIDACIÓN DNI
+    if (!formData.dni.trim()) {
+      nuevosErrores.dni = 'El DNI es obligatorio';
+    } else if (!validarDNI(formData.dni)) {
+      nuevosErrores.dni = 'El DNI debe tener exactamente 8 dígitos';
+    }
+
     if (!formData.nombre.trim()) {
       nuevosErrores.nombre = 'El nombre es obligatorio';
     } else if (formData.nombre.trim().length < 3) {
@@ -186,7 +290,7 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
       const fechaSeleccionada = new Date(formData.fecha + 'T00:00:00');
       const hoy = new Date();
       hoy.setHours(0, 0, 0, 0);
-      
+
       if (fechaSeleccionada < hoy) {
         nuevosErrores.fecha = 'La fecha no puede ser anterior a hoy';
       }
@@ -214,19 +318,59 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
   const handleSolicitarReserva = () => {
     if (!validarFormularioBasico()) {
       const primerError = Object.values(errors)[0];
-      alert(`${primerError || 'Por favor, corrige los errores en el formulario'}`);
+      alert(` ${primerError || 'Por favor, corrige los errores en el formulario'}`);
       return;
+    }
+
+    // VERIFICAR DNI DUPLICADO
+    const reservasExistentes = JSON.parse(localStorage.getItem('reservas') || '[]');
+    const dniDuplicado = reservasExistentes.find(r =>
+      r.dni === formData.dni &&
+      r.estado !== 'CANCELADA'
+    );
+
+    if (dniDuplicado) {
+      const confirmar = window.confirm(
+        ` ADVERTENCIA: DNI DUPLICADO\n\n` +
+        `Ya existe una reserva activa con el DNI ${formData.dni}:\n\n` +
+        `• Cliente: ${dniDuplicado.nombre}\n` +
+        `• Reserva No.: ${dniDuplicado.numeroReserva}\n` +
+        `• Estado: ${dniDuplicado.estado}\n` +
+        `• Fecha: ${dniDuplicado.fecha}\n` +
+        `• Hora: ${dniDuplicado.hora}\n\n` +
+        `¿Desea crear una nueva reserva de todas formas?`
+      );
+
+      if (!confirmar) return;
     }
 
     // Crear reserva con estado PENDIENTE
     const reservaPendiente = {
       ...formData,
-      estado: 'PENDIENTE'
+      estado: 'PENDIENTE',
+      numeroReserva: `RES-${Date.now().toString().slice(-6)}`,
+      fechaCreacion: new Date().toISOString()
     };
 
     if (typeof onSepararMesa === 'function') {
       onSepararMesa(reservaPendiente);
     }
+
+    // Limpiar formulario
+    setFormData({
+      dni: '',
+      nombre: '',
+      email: '',
+      telefono: '',
+      fecha: '',
+      hora: '',
+      personas: '',
+      solicitudes: '',
+      disponibilidadConfirmada: false
+    });
+    setDisponibilidadVerificada(false);
+    setErrors({});
+    setDniAutocompletado(false);
   };
 
   // ========== CONFIRMAR RESERVA (CONFIRMADA) ==========
@@ -235,19 +379,59 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
 
     if (!validarFormularioCompleto()) {
       const primerError = Object.values(errors)[0];
-      alert(`${primerError || 'Por favor, corrige los errores en el formulario'}`);
+      alert(` ${primerError || 'Por favor, corrige los errores en el formulario'}`);
       return;
+    }
+
+    // VERIFICAR DNI DUPLICADO
+    const reservasExistentes = JSON.parse(localStorage.getItem('reservas') || '[]');
+    const dniDuplicado = reservasExistentes.find(r =>
+      r.dni === formData.dni &&
+      r.estado !== 'CANCELADA'
+    );
+
+    if (dniDuplicado) {
+      const confirmar = window.confirm(
+        `ADVERTENCIA: DNI DUPLICADO\n\n` +
+        `Ya existe una reserva activa con el DNI ${formData.dni}:\n\n` +
+        `• Cliente: ${dniDuplicado.nombre}\n` +
+        `• Reserva No.: ${dniDuplicado.numeroReserva}\n` +
+        `• Estado: ${dniDuplicado.estado}\n` +
+        `• Fecha: ${dniDuplicado.fecha}\n` +
+        `• Hora: ${dniDuplicado.hora}\n\n` +
+        `¿Desea crear una nueva reserva de todas formas?`
+      );
+
+      if (!confirmar) return;
     }
 
     // Crear reserva con estado CONFIRMADA
     const reservaConfirmada = {
       ...formData,
-      estado: 'CONFIRMADA'
+      estado: 'CONFIRMADA',
+      numeroReserva: `RES-${Date.now().toString().slice(-6)}`,
+      fechaCreacion: new Date().toISOString()
     };
 
     if (typeof onConfirmar === 'function') {
       onConfirmar(reservaConfirmada);
     }
+
+    // Limpiar formulario
+    setFormData({
+      dni: '',
+      nombre: '',
+      email: '',
+      telefono: '',
+      fecha: '',
+      hora: '',
+      personas: '',
+      solicitudes: '',
+      disponibilidadConfirmada: false
+    });
+    setDisponibilidadVerificada(false);
+    setErrors({});
+    setDniAutocompletado(false);
   };
 
   const getFechaMinima = () => {
@@ -265,6 +449,32 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
           {/* ========== INFORMACIÓN PERSONAL ========== */}
           <div className="seccion-header">INFORMACIÓN PERSONAL</div>
           <div className="seccion-contenido">
+
+            {/* CAMPO DNI - PRIMERO Y DESTACADO */}
+            <div className="form-group form-group-dni">
+              <label className="label-dni">
+                <FaIdCard className="icono-dni" />
+                DNI <span className="requerido">*</span>
+              </label>
+              <input
+                type="text"
+                name="dni"
+                
+                className={`form-input input-dni ${errors.dni ? 'input-error' : ''} ${formData.dni.length === 8 && validarDNI(formData.dni) ? 'input-valido' : ''}`}
+                value={formData.dni}
+                onChange={handleChange}
+                placeholder="Ingrese 8 dígitos"
+                maxLength="8"
+              />
+              <div className="dni-info">
+                <span className={`dni-contador ${formData.dni.length === 8 ? 'completo' : ''}`}>
+                  {formData.dni.length}/8 dígitos
+                  {formData.dni.length === 8 && validarDNI(formData.dni) && ' '}
+                </span>
+              </div>
+              {errors.dni && <span className="error-mensaje">{errors.dni}</span>}
+            </div>
+
             <div className="form-group">
               <label>
                 Nombre completo <span className="requerido">*</span>
@@ -272,10 +482,12 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
               <input
                 type="text"
                 name="nombre"
+                readOnly
                 className={`form-input ${errors.nombre ? 'input-error' : ''}`}
                 value={formData.nombre}
                 onChange={handleChange}
-                placeholder="Ingresar nombre completo..."
+                placeholder={cargandoDni ? 'Buscando nombre por DNI...' : 'Ingresar nombre completo...'}
+                disabled={cargandoDni}
               />
               {errors.nombre && <span className="error-mensaje">{errors.nombre}</span>}
             </div>
@@ -378,7 +590,7 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
                 {verificandoDisponibilidad ? (
                   <>VERIFICANDO...</>
                 ) : disponibilidadVerificada ? (
-                  <>DISPONIBILIDAD CONFIRMADA</>
+                  <> DISPONIBILIDAD CONFIRMADA</>
                 ) : (
                   <>VERIFICAR DISPONIBILIDAD</>
                 )}
@@ -417,24 +629,24 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
 
           {/* ========== TRES BOTONES ========== */}
           <div className="form-botones-tres">
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn-cancelar-form"
               onClick={onCancelar}
             >
               CANCELAR
             </button>
 
-            <button 
-              type="button" 
+            <button
+              type="button"
               className="btn-solicitar-reserva"
               onClick={handleSolicitarReserva}
             >
               SOLICITAR RESERVA
             </button>
 
-            <button 
-              type="submit" 
+            <button
+              type="submit"
               className="btn-reservar"
               disabled={!formData.disponibilidadConfirmada}
             >
@@ -444,8 +656,8 @@ function CompFormReserva({ onConfirmar, onCancelar, onSepararMesa }) {
 
           <div className="form-info-botones">
             <p className="info-texto-botones">
-              <strong>Información:</strong><br/>
-              • <strong>SOLICITAR RESERVA:</strong> Envía tu solicitud como PENDIENTE (sin verificar disponibilidad)<br/>
+              <strong>Información:</strong><br />
+              • <strong>SOLICITAR RESERVA:</strong> Envía tu solicitud como PENDIENTE (sin verificar disponibilidad)<br />
               • <strong>CONFIRMAR RESERVA:</strong> Reserva inmediata CONFIRMADA (requiere verificación de disponibilidad)
             </p>
           </div>

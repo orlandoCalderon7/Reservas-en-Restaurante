@@ -84,6 +84,7 @@
 
 .recordar-credenciales {
   background-color: #d1fae5;
+  color: white;
   padding: 12px;
   border-radius: 8px;
   display: flex;
@@ -95,6 +96,7 @@
   width: 18px;
   height: 18px;
   cursor: pointer;
+  color: white;
 }
 
 .recordar-credenciales label {

@@ -330,7 +330,7 @@
 
 .inicio-wrapper {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+  /*background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);*/
   display: flex;
   flex-direction: column;
 }
@@ -821,4 +821,111 @@
 
 .btn-ver-detalles:hover {
   background-color: #92400e;
+}
+
+/* ================================================= */
+/* ============= ESTILOS DEL TEMA OSCURO ============= */
+/* ================================================= */
+
+/* ------------------ NAVBAR ------------------ */
+.dark .navbar {
+  background-color: #374151; /* Color oscuro para la barra de navegación */
+  box-shadow: 0 2px 4px rgba(255, 255, 255, 0.1);
+}
+
+.dark .nav-usuario,
+.dark .nav-btn {
+  color: #f3f4f6; /* Texto claro */
+}
+
+.dark .nav-btn {
+  background-color: #6b7280;
+}
+
+.dark .nav-btn:hover,
+.dark .nav-btn.activo {
+  background-color: #4b5563;
+}
+
+/* ------------------ TARJETAS Y FONDOS BLANCOS ------------------ */
+
+/* Fondos de Tarjetas (Login, Inicio, Carta, Admin) */
+.dark .login-card,
+.dark .tarjeta-acceso,
+.dark .carta-item,
+.dark .metrica-card,
+.dark .calendario-section,
+.dark .reservas-section,
+.dark .confirmacion-card {
+  background-color: #1f2937; /* Fondo oscuro para tarjetas */
+  border-color: #4b5563; /* Borde más suave */
+  color: #f3f4f6; /* Texto claro */
+}
+
+/* Encabezados y Títulos (Para que no sean demasiado oscuros) */
+.dark .titulo-principal,
+.dark .login-header h2,
+.dark .tarjeta-acceso h2,
+.dark .carta-contenido h2,
+.dark .titulo-confirmacion,
+.dark .panel-titulo,
+.dark .section-titulo {
+  color: #f59e0b; /* Un color de acento claro (ej. naranja más claro) */
+}
+
+/* Texto Secundario (Párrafos, descripciones) */
+.dark p,
+.dark .subtitulo,
+.dark .carta-contenido p {
+  color: #d1d5db;
+}
+
+/* ------------------ ELEMENTOS ESPECÍFICOS ------------------ */
+
+/* Header de Inicio (donde está el logo) */
+.dark .header-inicio {
+  background-color: #1f2937; /* Fondo oscuro */
+  border-bottom-color: #4b5563;
+}
+
+/* Inputs de Formulario */
+.dark .input-campo {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #f3f4f6;
+}
+
+.dark .input-campo:focus {
+  border-color: #f59e0b;
+}
+
+/* Footer */
+.dark .footer {
+  background-color: #374151;
+}
+
+/* Elementos de la Carta */
+.dark .carta-item:hover {
+  background-color: #374151;
+}
+
+/* Elementos de Admin Panel */
+.dark .dia-cell {
+  border-color: #4b5563;
+}
+.dark .dia-cell:hover {
+  background-color: #374151;
+}
+.dark .reservas-dia-panel {
+  border-color: #4b5563;
+}
+.dark .reserva-dia-item {
+  background-color: #374151;
+}
+.dark .reserva-card {
+  border-color: #4b5563;
+}
+.dark .info-badge {
+  border-color: #4b5563;
+  background-color: #374151;
 }

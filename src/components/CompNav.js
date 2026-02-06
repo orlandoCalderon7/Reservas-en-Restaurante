@@ -1,8 +1,9 @@
 import React from 'react';
 import { IoLogOutOutline } from 'react-icons/io5'; //  Importar el ícono
 import './CompNav.css';
+import CompTema from './CompTema';
 
-function CompNav({ usuario, tipoUsuario, onLogout, vistaActual, cambiarVista }) {
+function CompNav({ usuario, tipoUsuario, onLogout, vistaActual, cambiarVista, tema, toggleTema }) {
   const handleNavClick = (vista) => {
     console.log('Navegando a:', vista);
     if (typeof cambiarVista === 'function') {
@@ -74,6 +75,8 @@ function CompNav({ usuario, tipoUsuario, onLogout, vistaActual, cambiarVista }) 
 
       {/* SECCIÓN DE USUARIO */}
       <div className="nav-usuario">
+        <CompTema tema={tema} toggleTema={toggleTema} /> 
+
         <div className="usuario-info">
           <span className="usuario-icono">
             {tipoUsuario === 'admin' ? '👨‍💼' : '👤'}

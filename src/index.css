@@ -11,3 +11,61 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* tema claro*/
+/* tema claro (se aplicará al body)*/
+.light{
+  background-color: #ffffff;
+  color: #000000;
+}
+
+/* tema oscuro (se aplicará al body)*/
+.dark{ 
+  background-color: #000000;
+  color: #ffffff;
+}
+
+/* ================================================= */
+/* ESTILOS GLOBALES DEL BOTÓN DE TEMA */
+/* ================================================= */
+
+.btn-tema {
+  cursor: pointer;
+  border-radius: 20px; /* Forma de píldora moderna */
+  padding: 8px 15px;
+  font-size: 0.9rem; /* Tamaño de fuente más legible */
+  font-weight: bold;
+  border: 2px solid; 
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px; /* Espacio entre el icono y el texto */
+  margin: 10px; /* Para separarlo si lo colocas flotante */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* ------------------------------------------------- */
+/* ESTILOS DEL BOTÓN EN MODO CLARO (.light) */
+/* ------------------------------------------------- */
+.light .btn-tema {
+  background-color: #f3f4f6; /* Fondo gris claro */
+  color: #1f2937; /* Texto oscuro */
+  border-color: #d1d5db;
+}
+
+.light .btn-tema:hover {
+  background-color: #e5e7eb;
+}
+
+/* ------------------------------------------------- */
+/* ESTILOS DEL BOTÓN EN MODO OSCURO (.dark) */
+/* ------------------------------------------------- */
+.dark .btn-tema {
+  background-color: #374151; /* Fondo oscuro */
+  color: #f3f4f6; /* Texto claro */
+  border-color: #4b5563;
+}
+
+.dark .btn-tema:hover {
+  background-color: #4b5563;
+}

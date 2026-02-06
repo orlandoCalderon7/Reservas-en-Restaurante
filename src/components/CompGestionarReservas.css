@@ -665,3 +665,217 @@
     font-size: 0.9rem;
   }
 }
+
+/* ================================================================= */
+/* ============= MODIFICACIONES PARA MODO OSCURO =================== */
+/* ================================================================= */
+
+/* Contenedor Principal de la Vista */
+.dark .gestionar-reservas-container {
+  background-color: #1a1a1a;
+  color: #e0e0e0;
+}
+
+/* Título */
+.dark .gestionar-titulo {
+  color: #e0e0e0;
+}
+
+/* Contenedor del Formulario y Resultados */
+.dark .gestionar-contenido {
+  background: #2c2c2c; /* Fondo de la caja principal */
+  border: 2px solid #ff9933; /* Borde naranja */
+}
+
+/* Sección Filtros */
+.dark .filtros-section {
+  border-bottom: 2px solid #444;
+}
+
+.dark .filtros-titulo,
+.dark .resultados-titulo {
+  color: #ff9933; /* Naranja brillante */
+}
+
+.dark .filtro-label {
+  color: #e0e0e0;
+}
+
+/* Inputs y Selectores */
+.dark .filtro-select,
+.dark .form-input,
+.dark .form-select {
+  background-color: #383838;
+  color: #f5f5f5;
+  border-color: #555;
+}
+
+/* Tarjeta de Reserva */
+.dark .reserva-card {
+  background: #383838;
+  border: 2px solid #444;
+}
+
+.dark .reserva-card:hover {
+  border-color: #ff9933;
+}
+
+.dark .reserva-header {
+  border-bottom: 2px solid #444;
+}
+
+.dark .reserva-info-label {
+  color: #a0a0a0;
+}
+
+.dark .reserva-info-valor {
+  color: #f5f5f5;
+}
+
+/* Badges de Detalles */
+.dark .detalle-badge {
+  background: #444;
+  border: 2px solid #555;
+  color: #e0e0e0;
+}
+
+/* Badges de Estado (Asegurar que se vean bien) */
+.dark .detalle-badge.estado-confirmada {
+  background: #065f46;
+  border-color: #10b981;
+  color: #d1fae5;
+}
+
+.dark .detalle-badge.estado-pendiente {
+  background: #92400e;
+  border-color: #f59e0b;
+  color: #fef3c7;
+}
+
+.dark .detalle-badge.estado-cancelada {
+  background: #991b1b;
+  border-color: #ef4444;
+  color: #fee2e2;
+}
+
+/* Botón Editar */
+.dark .btn-editar {
+  background: #383838;
+  color: #ff9933;
+  border: 2px solid #ff9933;
+}
+
+.dark .btn-editar:hover {
+  background: #444;
+}
+
+/* Sin Resultados */
+.dark .sin-resultados {
+  color: #a0a0a0;
+}
+
+/* ========== ESTILOS PARA DNI ========== */
+
+/* Campo DNI destacado en el formulario */
+.form-group-destacado {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.form-group-destacado .form-label {
+  color: white;
+  font-weight: bold;
+}
+
+.form-input-dni {
+  background: white;
+  border: 3px solid #4CAF50 !important;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.form-input-dni:focus {
+  border-color: #45a049 !important;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.5) !important;
+}
+
+/* Ayuda visual del DNI */
+.form-ayuda {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.85em;
+  color: white;
+  font-weight: bold;
+}
+
+/* DNI en la card de reserva */
+.reserva-dni {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 8px 15px;
+  border-radius: 5px;
+  color: white;
+}
+
+.reserva-dni-valor {
+  font-weight: bold;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+}
+
+/* Filtro de DNI */
+.filtro-input {
+  padding: 10px 15px;
+  border: 2px solid #ddd;
+  border-radius: 5px;
+  font-size: 1em;
+  width: 200px;
+  transition: all 0.3s;
+}
+
+.filtro-input:focus {
+  border-color: #667eea;
+  outline: none;
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
+}
+
+/* Botón limpiar filtros */
+.btn-limpiar {
+  background: #ff6b6b;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+  margin-left: 10px;
+}
+
+.btn-limpiar:hover {
+  background: #ff5252;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
+}
+
+/* Botón ver todas */
+.btn-ver-todas {
+  margin-top: 15px;
+  padding: 10px 20px;
+  background: #667eea;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.btn-ver-todas:hover {
+  background: #5568d3;
+  transform: translateY(-2px);
+}
+

@@ -80,6 +80,8 @@ sistema-pedidos/
 "react": "^19.2.0",
 "react-dom": "^19.2.0",
 "react-scripts": "5.0.1",
+"axios": "^1.7.9",
+"react-icons": "^5.4.0"
 "@testing-library/react": "^16.3.0",
 "@testing-library/jest-dom": "^6.9.1",
 "@testing-library/user-event": "^13.5.0",
@@ -102,6 +104,8 @@ npm install
 ```
 npm start
 ```
+
+4. La aplicación se abrirá automáticamente en http://localhost:3000
 
 ## 6. Componentes Principales
 Descripción de los componentes principales según su función en el sistema (Nav, Login, Registro, Cartas, Form Reservas, Gestión Reservas, Confirmación, Panel Admin, Recuperar Pass, Footer, Actualizar).
@@ -133,5 +137,6 @@ Registrar uno nuevo desde la app.
 5. Confirmar.
 6. (Admin) Revisar panel de control.
 
-
+## 11. Consumo de API
+1. Este proyecto utiliza la API de GraphPeru para verificar y consultar datos de DNI desde RENIEC. "https://graphperu.daustinn.com/api/query"
 

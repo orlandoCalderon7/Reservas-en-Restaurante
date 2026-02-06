@@ -647,3 +647,105 @@
   animation: pulse-solicitar 2.5s ease-in-out infinite;
 }
 
+/* ================================================================= */
+/* ============= MODO OSCURO =================== */
+/* ================================================================= */
+
+/* 1. Contenedor Principal (Fondo de la página) */
+.dark .reserva-container {
+  background: #1e1e1e; /* Fondo oscuro */
+}
+
+/* 2. Título Naranja (Aseguramos que sea visible en fondo oscuro) */
+.dark .reserva-titulo {
+  color: #ff9933; /* Naranja más brillante para contraste */
+}
+
+/* 3. Formulario (Caja principal) */
+.dark .reserva-form {
+  background: #2c2c2c; /* Fondo del formulario oscuro */
+  border: 2px solid #ff9933; /* Borde naranja brillante */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+/* 4. Headers de Sección (Naranja) */
+.dark .seccion-header {
+  background-color: #ff9933; /* Naranja más brillante */
+  color: #1e1e1e; /* Texto oscuro para contraste */
+}
+
+/* 5. Labels y Texto General */
+.dark .form-group label {
+  color: #e0e0e0; /* Texto claro */
+}
+
+/* 6. Inputs y Textareas */
+.dark .form-input,
+.dark .form-select,
+.dark.textarea-campo {
+  background-color: #383838; /* Fondo de input oscuro */
+  color: #ffffff; /* Texto blanco */
+  border: 1px solid #555;
+}
+
+.dark .form-input::placeholder,
+.dark .textarea-campo::placeholder {
+  color: #a0a0a0;
+}
+
+.dark .form-input:focus,
+.dark .form-select:focus,
+.dark .textarea-campo:focus {
+  border-color: #ff9933;
+}
+
+/* 7. Mensajes de Ayuda (Horario) */
+.dark .form-ayuda {
+  color: #ff9933;
+}
+
+/* 8. Checkbox de Disponibilidad */
+.dark .disponibilidad-check {
+  background-color: #383838;
+  border: 2px solid #555;
+}
+
+.dark .disponibilidad-check label {
+  color: #e0e0e0;
+}
+
+.dark .disponibilidad-check.confirmada {
+  background-color: #054d37; /* Verde oscuro */
+  border-color: #10b981;
+}
+
+.dark .disponibilidad-check.confirmada label {
+  color: #d1fae5;
+}
+
+/* 9. Botón Cancelar (Ajuste de colores) */
+.dark .btn-cancelar-form {
+  background-color: #383838;
+  color: #e0e0e0;
+  border: 2px solid #555;
+}
+
+.dark .btn-cancelar-form:hover {
+  background-color: #444;
+  border-color: #888;
+}
+
+/* 10. Información de Botones (La caja amarilla) */
+.dark .form-info-botones {
+  background: linear-gradient(135deg, #383838 0%, #444 100%);
+  border: 2px solid #f59e0b;
+}
+
+.dark .info-texto-botones {
+  color: #e0e0e0;
+}
+
+.dark .info-texto-botones strong {
+  color: #ff9933;
+}
+
