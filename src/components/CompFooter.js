@@ -4,7 +4,7 @@ import './CompFooter.css';
 function CompFooter() {
   return (
     <footer className="footer">
-      <p> © 2025 LOS TRES SABORES - TODOS LOS DERECHOS RESERVADOS - @GRUPO 2 - ZEGEL</p>
+      <p> © 2025 LOS TRES SABORES - TODOS LOS DERECHOS RESERVADOS - @GRUPO 4 - ZEGEL</p>
     </footer>
   );
 }
